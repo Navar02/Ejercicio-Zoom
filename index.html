@@ -7,14 +7,22 @@
     <title>Canvas. Ejemplos del método drawImage</title>
   </head>
   <body>
-    <canvas id="lienzo" width="448" height="544"></canvas>
+    <canvas id="lienzo" width="700" height="600" style="border:1px solid #000000"></canvas>
     <script>
       var lienzo = document.getElementById("lienzo");
       var context = lienzo.getContext("2d");
       var logo = new Image();
       logo.src = "SW/tiles.png";
 
-      context.strokeRect(0, 0, 32, 12);
+      logo.onload = function () {
+        // 3 parametros (qué, dónde colocar)
+        context.drawImage(logo, 0, 0);
+        context.strokeRect(0, 0, 32, 32);
+        context.font = "20px Arial";
+        context.strokeRect(0, 0, 32, 32);
+        context.drawImage(logo, 0, 0, 16, 16, 560, 25, 56, 72);
+        
+      }
     </script>
   </body>
   </html>
