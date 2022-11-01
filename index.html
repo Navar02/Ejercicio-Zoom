@@ -6,5 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Canvas. Ejemplos del método drawImage</title>
   </head>
+  <body>
+    <canvas id="lienzo" width="448" height="544"></canvas>
+    <script>
+      var lienzo = document.getElementById("lienzo");
+      var context = lienzo.getContext("2d");
+      var logo = new Image();
+      logo.src = "SW/tiles.png";
 
+      context.strokeRect(0, 0, 32, 12);
+    </script>
+  </body>
   </html>
