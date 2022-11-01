@@ -12,15 +12,63 @@
       var context = lienzo.getContext("2d");
       var logo = new Image();
       logo.src = "SW/tiles.png";
-
+      alto=16
+      ancho=16
       logo.onload = function () {
+        alto=16
+        ancho=16
         // 3 parametros (qué, dónde colocar)
+        context.strokeStyle="red"
+        context.lineWidth=3;
+        x=0
+        y=0
         context.drawImage(logo, 0, 0);
+        context.strokeRect(0, 0, alto, ancho);
         //context.strokeRect(0, 0, 32, 32);
         context.font = "20px Arial";
 
-        context.drawImage(logo, 0, 0, 16, 16, 560, 25, 56, 72);
-        
+        context.strokeRect(560, 25, 56, 72);
+        context.drawImage(logo, 0, 0, alto, ancho, 560, 25, 56, 72);
+        document.addEventListener("keydown", e=>{
+          if(e.keyCode==38 && y>0){
+            context.clearRect(0, 0, 700, 600)
+            y-=16
+            context.drawImage(logo, 0, 0);
+            context.strokeRect(x, y, alto, ancho)
+            context.clearRect(560, 25, 56, 72)
+            context.strokeRect(560, 25, 56, 72);
+            context.drawImage(logo, x, y, alto, ancho, 560, 25, 56, 72);
+          }
+          if(e.keyCode==40 && y<528-96){
+            console.log(e.key)
+            context.clearRect(0, 0, 700, 600)
+            y+=16
+            context.drawImage(logo, 0, 0);
+            context.strokeRect(x, y, alto, ancho)
+            context.clearRect(560, 25, 56, 72)
+            context.strokeRect(560, 25, 56, 72);
+            context.drawImage(logo, x, y, alto, ancho, 560, 25, 56, 72);
+          }
+          if(e.keyCode==39 && x<448+16*4){
+            x+=16
+            context.clearRect(0, 0, 700, 600)
+            context.drawImage(logo, 0, 0);
+            context.strokeRect(x, y, alto, ancho)
+            context.clearRect(560, 25, 56, 72)
+            context.strokeRect(560, 25, 56, 72);
+            context.drawImage(logo, x, y, alto, ancho, 560, 25, 56, 72);
+          }
+          if(e.keyCode==37 && x>0){
+            console.log(e.key)
+            x-=16
+            context.clearRect(0, 0, 700, 600)
+            context.drawImage(logo, 0, 0);
+            context.strokeRect(x, y, alto, ancho)
+            context.clearRect(560, 25, 56, 72)
+            context.strokeRect(560, 25, 56, 72);
+            context.drawImage(logo, x, y, alto, ancho, 560, 25, 56, 72);
+          }
+        })
       }
     </script>
   </body>
